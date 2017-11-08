@@ -133,7 +133,7 @@ public class OperBD {
        }
    
    public static void updateUser(Connection conn, ContaUsuario user) throws SQLException {
-       String sql = "UPDATE CONTA_USUARIO SET login=?, senha=?, tipoacesso=? where matricula=? ";
+       String sql = "UPDATE CONTA_USUARIO SET login=?, senha=?, tipoacesso=? WHERE matricula=? ";
 
        PreparedStatement pstm = conn.prepareStatement(sql);
 
@@ -146,7 +146,7 @@ public class OperBD {
    
    public static void updatePessoa(Connection conn, Pessoa p) throws SQLException {
        String sql = "UPDATE PESSOA SET nome=?, endereco=?, telefone=?, email=?, rg=?, cpf_cnpj=?, status=?, tipo=?, "
-       		+ "tipo_emp=?, depto=?, cargo=? where matricula=? ";
+       		+ "tipo_emp=?, depto=?, cargo=? WHERE matricula=? ";
 
        PreparedStatement pstm = conn.prepareStatement(sql);
        
@@ -162,7 +162,7 @@ public class OperBD {
        pstm.setString(10, p.getDepto());
        pstm.setString(11, p.getCargo());
        pstm.setInt(12, p.getMatricula());
-      
+     
        pstm.executeUpdate();
    }
   
@@ -180,13 +180,45 @@ public class OperBD {
        pstm.executeUpdate();
    }
    
+   public static void insertPessoa(Connection conn, Pessoa p) throws SQLException {
+       String sql = "INSERT INTO PESSOA(matricula, nome, endereco, telefone, email, rg, cpf_cnpj, status, tipo, tipo_emp, depto, cargo)\n" + 
+       		"VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+
+       PreparedStatement pstm = conn.prepareStatement(sql);
+       
+       pstm.setInt(1, p.getMatricula());
+       pstm.setString(2, p.getNome());
+       pstm.setString(3, p.getEndereco());
+       pstm.setString(4, p.getTelefone());
+       pstm.setString(5, p.getEmail());
+       pstm.setString(6, p.getRg());
+       pstm.setString(7, p.getCpf_cnpj());
+       pstm.setString(8, p.getStatus());
+       pstm.setString(9, p.getTipo());
+       pstm.setString(10, p.getTipo_emp());
+       pstm.setString(11, p.getDepto());
+       pstm.setString(12, p.getCargo());
+       
+
+       pstm.executeUpdate();
+   }
+   
    public static void deleteUser(Connection conn, String matriculaStr) throws SQLException {
-       String sql = "DELETE FROM CONTA_USUARIO WHERE matricula= ?";
+       String sql = "DELETE FROM PESSOA WHERE matricula=?";
 
        PreparedStatement pstm = conn.prepareStatement(sql);
        
        pstm.setString(1, matriculaStr);
-      // pstm.setInt(1, matricula);
+
+       pstm.executeUpdate();
+   }
+   
+   public static void deletePessoa(Connection conn, String matriculaStr) throws SQLException {
+       String sql = "DELETE FROM PESSOA WHERE matricula= ?";
+
+       PreparedStatement pstm = conn.prepareStatement(sql);
+       
+       pstm.setString(1, matriculaStr);
 
        pstm.executeUpdate();
    }

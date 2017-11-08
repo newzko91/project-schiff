@@ -1,4 +1,4 @@
-package br.unip.aps.servlets;
+package br.unip.aps.servlets.dashboard;
 
 import java.io.IOException;
 
@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = { "/home" })
-public class MainPageServlet extends HttpServlet {
+@WebServlet(urlPatterns = { "/dashboard" })
+public class DashboardServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	 
-	   public MainPageServlet() {
+	   public DashboardServlet() {
 	       super();
 	   }
 	 
@@ -24,7 +24,7 @@ public class MainPageServlet extends HttpServlet {
 	        
 	       // Forward to /WEB-INF/views/homeView.jsp
 	       // (Users can not access directly into JSP pages placed in WEB-INF)
-	       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsps/home/homeView.jsp");
+	       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("WEB-INF/jsps/dashboard/dashboard.jsp");
 	        
 	       dispatcher.forward(request, response);
 	        

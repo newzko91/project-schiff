@@ -12,13 +12,7 @@ public class APSGeneralConn {
               throws ClassNotFoundException, SQLException {
     		
     		return MySQLConn.getMySQLConnection();
-    	
-    		// PARA CASO FORMOS UTILIZAR UM OUTRO DB
-        //return OracleConnUtils.getOracleConnection();
-        // return OracleConnUtils.getOracleConnection();
-        // return SQLServerConnUtils_JTDS.getSQLServerConnection_JTDS();
-        // return SQLServerConnUtils_SQLJDBC.getSQLServerConnection_SQLJDBC();
-        // return PostGresConnUtils.getPostGresConnection();
+
     }
      
     public static void closeQuietly(Connection conn) {

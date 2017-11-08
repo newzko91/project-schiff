@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebFilter(filterName = "LoginFilter", urlPatterns = { "/home","/admin","/adminedit","/admincreate","/admindelete", "/dashboard" })
+@WebFilter(filterName = "LoginFilter", urlPatterns = { "/home","/admin","/adminedit","/admincreate","/admindelete", "/dashboard", "/pessoas", "/pessoasedit", "/pessoascreate", "/pessoasdelete" })
 public class LoginFilter implements Filter {
 
 	@Override

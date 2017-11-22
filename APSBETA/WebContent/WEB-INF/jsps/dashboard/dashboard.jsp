@@ -15,7 +15,7 @@
 	href="${pageContext.request.contextPath}/css/styles.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/aps.css">
-<jsp:include page="${pageContext.request.contextPath}/jsps/_header.jsp"></jsp:include>
+<jsp:include page="../../jsps/includes/_header.jsp"></jsp:include>
 <script type="text/javascript">
 
 window.onload = function () {
@@ -166,6 +166,6 @@ window.onload = function () {
 
 	<!-- Fim  da parte importante 2 -->
 	<br>
-	<jsp:include page="${pageContext.request.contextPath}/jsps/_footer.jsp"></jsp:include>
+	<jsp:include page="../../jsps/includes/_footer.jsp"></jsp:include>
 </body>
 </html>

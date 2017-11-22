@@ -9,15 +9,17 @@
 
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/styles.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ship.css">
     <jsp:include page="../../jsps/includes/_header.jsp"></jsp:include>
 
 </head>
 <body>
 	
+	<jsp:include page="../../jsps/includes/_ship.jsp"></jsp:include>
 	<br>
-	<h3>Welcome World!</h3>
+	<p style="font-size:70px;color:white;">&nbsp;Porto Limpo</p>
 	<br>
 	<br>
-	<jsp:include page="../../jsps/includes/_footer.jsp"></jsp:include>
+
 </body>
 </html>

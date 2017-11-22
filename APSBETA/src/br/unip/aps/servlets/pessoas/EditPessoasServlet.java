@@ -88,20 +88,20 @@ public class EditPessoasServlet extends HttpServlet {
         } catch (Exception e) {
         }
         
-        Pessoa p = new Pessoa(matricula, nome, endereco,  telefone,  email, rg,
+        Pessoa pessoa = new Pessoa(matricula, nome, endereco,  telefone,  email, rg,
     			 cpf_cnpj,  status,  tipo,  tipo_emp,  depto,  cargo);
  
         String errorString = null;
  
         try {
-            OperBD.updatePessoa(conn, p);
+            OperBD.updatePessoa(conn, pessoa);
         } catch (SQLException e) {
             e.printStackTrace();
             errorString = e.getMessage();
         }
         // Store infomation to request attribute, before forward to views.
         request.setAttribute("errorString", errorString);
-        request.setAttribute("pessoa", p);
+        request.setAttribute("pessoa", pessoa);
  
         // If error, forward to Edit page.
         if (errorString != null) {

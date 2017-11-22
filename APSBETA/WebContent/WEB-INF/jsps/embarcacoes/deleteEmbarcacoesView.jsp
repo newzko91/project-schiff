@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<jsp:include page="../../jsps/includes/_header.jsp"></jsp:include>
+	<h3 color="red">Erro ao excluir embarcação!</h3>
+	<br>
+	<a href="${pageContext.request.contextPath}/embarcacoes">Voltar</a>
+	<jsp:include page="../../jsps/includes/_footer.jsp"></jsp:include>
 </body>
 </html>

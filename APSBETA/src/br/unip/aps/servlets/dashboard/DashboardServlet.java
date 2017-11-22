@@ -21,10 +21,7 @@ public class DashboardServlet extends HttpServlet {
 	   protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	           throws ServletException, IOException {
 	 
-	        
-	       // Forward to /WEB-INF/views/homeView.jsp
-	       // (Users can not access directly into JSP pages placed in WEB-INF)
-	       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("WEB-INF/jsps/dashboard/dashboard.jsp");
+	       RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsps/dashboard/dashboard.jsp");
 	        
 	       dispatcher.forward(request, response);
 	        

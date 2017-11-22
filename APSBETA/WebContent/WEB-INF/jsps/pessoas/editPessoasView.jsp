@@ -11,8 +11,22 @@
 	href="${pageContext.request.contextPath}/css/styles.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/aps.css">
+	
 <jsp:include page="../../jsps/includes/_header.jsp"></jsp:include>
 <title>APS | Editar Pessoa</title>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+
+    var text1 = '${pessoa.tipo_emp}';
+    $("#mySelect1").val(text1);
+
+    var text2 = 'Mushroom pie';
+    $("#mySelect2 option[text=" + text2 + "]").attr('selected', 'selected');        
+
+  });
+
+  </script> 
 </head>
 <body>
 	<br>
@@ -21,9 +35,8 @@
 	<p style="color: red;">${errorString}</p>
 
 	<c:if test="${not empty pessoa}">
-		<form method="POST"
-			action="${pageContext.request.contextPath}/pessoasedit">
-			<input type="hidden" name="matricula" value="${p.matricula}" />
+		<form method="POST" action="${pageContext.request.contextPath}/pessoasedit">
+			<input type="hidden" name="matricula" value="${pessoa.matricula}" />
 			<table id="myTable">
 				<tr>
 					<td>Matricula</td>
@@ -60,9 +73,8 @@
 						value="${pessoa.cpf_cnpj}" /></td>
 				</tr>
 				<tr>
-					<td>Status</td>
+					<td id="selection">Status</td>
 					<td><select name="status" class="styled-select slate">
-							<option>${pessoa.status}</option>
 							<option value="1">Ativo</option>
 							<option value="2">Inativo</option>
 							<option value="3">Desligado</option>
@@ -73,7 +85,7 @@
 				<tr>
 					<td>Personalidade Juridica</td>
 					<td><select name="tipo" class="styled-select slate">
-							<option>${pessoa.tipo}</option>
+					<!--  		<option>${pessoa.tipo}</option> -->
 							<option value="1">PF</option>
 							<option value="2">PJ</option>
 					</select></td>
@@ -81,18 +93,18 @@
 				<tr>
 					<td>Tipo Base RH</td>
 					<td><select name="tipo_emp" class="styled-select slate">
-							<option>${pessoa.tipo_emp}</option>
+						<!-- 	<option>${pessoa.tipo_emp}</option> -->
 							<option value="1">Cliente</option>
 							<option value="2">Funcionario</option>
 					</select></td>
 				</tr>
 				<tr>
 					<td>Departamento</td>
-					<td><select name="depto" class="styled-select slate">
-							<option>${pessoa.depto}</option>
+					<td><select name="depto" id="mySelect1">
+							<option value='${pessoa.depto}'>${pessoa.depto}</option>
 							<option value="1">Controle de Cargas</option>
 							<option value="2">RH</option>
-							<option value="3">Seg da Informação'</option>
+							<option value="3">Seg da Informação</option>
 							<option value="4">Cliente</option>
 
 					</select></td>
@@ -100,7 +112,7 @@
 				<tr>
 					<td>Cargo</td>
 					<td><select name="cargo" class="styled-select slate">
-							<option>${pessoa.cargo}</option>
+					<!-- 		<option>${pessoa.cargo}</option> -->
 							<option value="1">Operador</option>
 							<option value="2">Cliente</option>
 					</select></td>

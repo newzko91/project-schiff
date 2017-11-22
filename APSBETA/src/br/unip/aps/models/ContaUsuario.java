@@ -7,6 +7,7 @@ public class ContaUsuario {
 	   private String login;
 	   private String senha;
 	   private String tipoacesso;
+	   public String administrador = "Admin";
 	   
 	   public ContaUsuario() {
 		   
@@ -17,6 +18,10 @@ public class ContaUsuario {
 		   this.nome = nome;
 		   this.login = login;
 		   this.senha = senha;
+		   this.tipoacesso = tipoacesso;
+	   }
+	   
+	   public ContaUsuario(String tipoacesso) {
 		   this.tipoacesso = tipoacesso;
 	   }
 

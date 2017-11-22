@@ -1,6 +1,8 @@
 package br.unip.aps.filters;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,22 +15,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import br.unip.aps.dao.GenOper;
+import br.unip.aps.dao.OperBD;
 
-@WebFilter(filterName = "LoginFilter", urlPatterns = { "/home","/admin","/adminedit","/admincreate","/admindelete", 
-		"/dashboard", "/pessoas", "/pessoasedit", "/pessoascreate", "/pessoasdelete",
-		"/cargas", "/cargascreate", "/cargasdelete","/cargasedit",
-		"/embarcacoescreate", "/embarcacaodelete", "/embarcacaoedit", "/embarcacoes"})
-public class LoginFilter implements Filter {
+//@WebFilter(filterName = "LoginFilter", urlPatterns = { "/admin"})
+public class AdminFilter implements Filter  {
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
-		// TODO Auto-generated method stub
 		
 	}
 	
@@ -36,17 +36,32 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
+		Connection conn = GenOper.getStoredConnection(request);
+		
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		HttpSession session = req.getSession(false);
 		
-		if(session == null || session.getAttribute("loginedUser") == null) {
-			res.sendRedirect(req.getContextPath() + "/login");
+		String login = (String) session.getAttribute("loginedUser");
+		 
+        String user = null;
+   
+ 
+        try {
+            user = OperBD.isAdmin(conn, login);    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            e.getMessage();
+        }
+		
+		
+		if(user != "Admin") {
+			res.sendRedirect(req.getContextPath() + "/home");
 			System.out.println("Acesso negado!");
 		} else {
             chain.doFilter(request, response);
 		} 
 			
 	} 
-	
+
 }

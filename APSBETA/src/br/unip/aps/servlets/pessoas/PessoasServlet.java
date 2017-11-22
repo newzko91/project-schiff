@@ -33,7 +33,7 @@ public class PessoasServlet extends HttpServlet {
         String errorString = null;
         List<Pessoa> list = null;
         try {
-            list = OperBD.queryPessoa(conn); 
+            list = OperBD.queryPessoa(conn);
         } catch (SQLException e) {
             e.printStackTrace();
             errorString = e.getMessage();

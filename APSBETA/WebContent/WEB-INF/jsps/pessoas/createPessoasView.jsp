@@ -19,8 +19,7 @@
 	<br>
 	<p style="color: red;">${errorString}</p>
 	<br>
-	<form method="POST"
-		action="${pageContext.request.contextPath}/pessoascreate">
+	<form method="POST" action="${pageContext.request.contextPath}/pessoascreate">
 		<table id="myTable">
 			<tr>
 				<td>Matricula</td>
@@ -112,6 +111,7 @@
 			</tr>
 		</table>
 	</form>
+	<br>
 	<jsp:include page="../../jsps/includes/_footer.jsp"></jsp:include>
 </body>
 </html>
